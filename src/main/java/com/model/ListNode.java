@@ -1,4 +1,4 @@
-package com.arithmetic;
+package com.model;
 
 /**
  * @author huangzhaoyu
@@ -6,9 +6,9 @@ package com.arithmetic;
  */
 public class ListNode {
 
-    int val;
-    ListNode next;
-    ListNode(int x) {
+    public int val;
+    public ListNode next;
+    public ListNode(int x) {
         val = x;
     }
 }
