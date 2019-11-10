@@ -1,6 +1,5 @@
 package com.arithmetic;
 
-import com.model.ListNode;
 
 /**
  * @author huangzhaoyu
