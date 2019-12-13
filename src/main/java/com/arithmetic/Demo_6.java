@@ -1,5 +1,8 @@
 package com.arithmetic;
 
+import java.rmi.dgc.Lease;
+import java.util.jar.JarEntry;
+
 /**
  * @author huangzhaoyu
  * @date 2019/11/19 14:08
@@ -38,13 +41,30 @@ public class Demo_6 {
     T     S     G
 */
 
-    public String convert(String s, int numRows) {
+    public static String convert(String s, int numRows) {
+        //将该字符串存入一个二维数组
+        int length = s.length();
+        int index = 0;
+        int x = numRows;
+        int y = length % numRows == 0 ? length / numRows : length / numRows + 1;
+        char[][] charArr = new char[x][y];
+        for (int i = 0; i < y; i++) {
+            if (i % (numRows - 1) == 0) {
+                //给那一竖赋值
+                for (int j = 0; j < x; j++) {
+                    charArr[i][j] = s.charAt(index);
+                    index++;
+                }
+            }
+
+        }
+        System.out.println(charArr);
 
         return null;
     }
 
     public static void main(String[] args) {
-
+        convert("abcdefqabcdefq", 3);
     }
 
 }
