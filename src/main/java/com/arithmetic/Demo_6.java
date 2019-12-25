@@ -56,7 +56,6 @@ public class Demo_6 {
                     index++;
                 }
             }
-
         }
         System.out.println(charArr);
 
