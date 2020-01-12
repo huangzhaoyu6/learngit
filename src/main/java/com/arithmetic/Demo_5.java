@@ -1,7 +1,5 @@
 package com.arithmetic;
 
-import java.util.HashMap;
-
 /**
  * @author huangzhaoyu
  * @date 2019/11/11 14:01
@@ -107,7 +105,7 @@ public class Demo_5 {
 
 
     public static void main(String[] args) {
-//        System.out.println(lengthOfLongestSubstring3("cbbd"));
+        System.out.println(lengthOfLongestSubstring3("cbbd"));
         System.out.println("abaae".substring(0,4));
     }
 
