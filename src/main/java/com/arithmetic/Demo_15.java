@@ -32,7 +32,10 @@ public class Demo_15 {
         return new ArrayList<List<Integer>>(trr.values());
     }
 
-
+    /**
+     * 优化了的暴力  将第三次的查询改为散列表查询
+     * 依旧时间过长
+     */
     public static List<List<Integer>> threeSum2(int[] nums) {
         Map<String, List<Integer>> trr = new TreeMap<>();
         for (int i = 0; i < nums.length; i++) {
@@ -58,11 +61,64 @@ public class Demo_15 {
     }
 
 
+    /**
+     * 双指针法
+     * <p>
+     * 先对数组进行排序
+     * 循环数组中的每一个元素 查看是否存在该数字符合条件的数组
+     * 用左右两端的指针的和与需要比较的 元素的负数 作比较，
+     * 如果和小于该元素，左元素向右移动，如果大于该元素，右元素向左移动
+     * 等于该元素的话将该元素存入预先准备的结果集合中，左右指针同时向内移动一次
+     * <p>
+     * 优化时间复杂度：
+     * 1.记录前一次做处理的元素值，每次获取元素时，与之前记录的元素值做比较，如果相等，跳过本次处理
+     * 2.当该元素的负数等于左右指针的和时，查看左右指针即将指向的下一个元素是否与当前指针元素相等，如果相等，直接向内移动一次。
+     */
+    public static List<List<Integer>> threeSum3(int[] nums) {
+
+        List<List<Integer>> list = new ArrayList<>();
+        int length = nums.length;
+        if (length < 3) {
+            return list;
+        }
+        int pre = nums[0] + 1;
+        Arrays.sort(nums);
+        for (int i = 0; i < length; i++) {
+            int idx = nums[i];
+            if (pre == idx) {
+                continue;
+            }
+            int l = i + 1;
+            int r = length - 1;
+            while (l < r) {
+                int left = nums[l];
+                int right = nums[r];
+                int sum = right + left;
+                if (-idx == sum) {
+                    List<Integer> li = new ArrayList<>();
+                    li.add(idx);
+                    li.add(left);
+                    li.add(right);
+                    list.add(li);
+                    while (l<r && left == nums[l]) l++;
+                    while (l<r && right == nums[r]) r--;
+                } else if (-idx < sum) {
+                    r--;
+                } else {
+                    l++;
+                }
+            }
+            pre = idx;
+        }
+        return list;
+    }
+
+
     public static void main(String[] args) {
 //        [[-2,-2,4],[-2,0,2],[-4,-2,6],[-4,0,4],[-4,1,3],[-4,2,2],]
-        int[] nums = {-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6};
-//        int[] nums = {0,0, 0,0, 0,0};
-        System.out.println(threeSum2(nums));
+//        int[] nums = {-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6};
+        int[] nums = {0,0,0};
+        System.out.println(threeSum3(nums));
     }
 
 }
