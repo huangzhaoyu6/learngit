@@ -100,8 +100,8 @@ public class Demo_15 {
                     li.add(left);
                     li.add(right);
                     list.add(li);
-                    while (l<r && left == nums[l]) l++;
-                    while (l<r && right == nums[r]) r--;
+                    while (l<r && left == nums[l]) {l++;}
+                    while (l<r && right == nums[r]) {r--;}
                 } else if (-idx < sum) {
                     r--;
                 } else {
