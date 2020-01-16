@@ -20,7 +20,7 @@ public class Demo_16 {
             return sum2;
         }
         Arrays.sort(nums);
-        //代表target - sum的差
+        //初始化target - sum的差
         int pre = Math.abs(nums[length - 1] + nums[length - 2] + nums[length - 3])+Math.abs(target);
 
         for (int i = 0; i < length; i++) {
@@ -39,6 +39,7 @@ public class Demo_16 {
                     r--;
                 }
                 int nowpre = Math.abs(target - sum);
+                //查看这个数字是否更靠近target
                 if (nowpre <= pre) {
                     pre = nowpre;
                     sum2 = sum;
