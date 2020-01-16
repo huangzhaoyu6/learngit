@@ -26,11 +26,7 @@ public class Demo_17 {
      List<String>  output = new ArrayList<String>();
 
     /***
-     * 回溯是一种通过穷举所有可能情况来找到所有解的算法。
-     * 如果一个候选解最后被发现并不是可行解，
-     * 回溯算法会舍弃它，并在前面的一些步骤做出一些修改，并重新尝试找到可行解。
-     *
-     * 给出如下回溯函数 backtrack(combination, next_digits) ，
+     * 给出如下递归函数 backtrack(combination, next_digits) ，
      * 它将一个目前已经产生的组合 combination 和接下来准备要输入的数字 next_digits 作为参数。
      *
      * 如果没有更多的数字需要被输入，那意味着当前的组合已经产生好了。
