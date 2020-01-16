@@ -43,8 +43,7 @@ public class Demo_14 {
     private String longestCommonPrefix(String[] strs, int l, int r) {
         if (l == r) {
             return strs[l];
-        }
-        else {
+        }else {
             int mid = (l + r)/2;
             String lcpLeft =   longestCommonPrefix(strs, l , mid);
             String lcpRight =  longestCommonPrefix(strs, mid + 1,r);
@@ -54,6 +53,7 @@ public class Demo_14 {
 
     String commonPrefix(String left,String right) {
         int min = Math.min(left.length(), right.length());
+        //取出最短的字符串长度，从最左边开始循环，当碰到不等的字符时，截取左侧的字符串为公共前缀
         for (int i = 0; i < min; i++) {
             if ( left.charAt(i) != right.charAt(i) ){
                 return left.substring(0, i);
@@ -63,7 +63,7 @@ public class Demo_14 {
     }
 
     public static void main(String[] args) {
-        String[] str = { "qaq2qwe","qaqq3we","qaqqw4e"};
+        String[] str = { "qaqqw1e","qaqqw2e","qaqqw3e","qaqqw4e","qaqqw5e","qaqqw6e","qaqqw7e"};
         System.out.println(new Demo_14().longestCommonPrefix2(str));
     }
 
