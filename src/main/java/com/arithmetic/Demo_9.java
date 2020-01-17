@@ -5,7 +5,7 @@ package com.arithmetic;
  * @date 2019/12/25 16:32
  */
 public class Demo_9 {
-    /*判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+    /**判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
 
     示例 1:
 
@@ -27,7 +27,7 @@ public class Demo_9 {
     进阶:
 
     你能不将整数转为字符串来解决这个问题吗？
-    */
+    **/
 
     public static boolean isPalindrome(int x) {
         // 特殊情况：

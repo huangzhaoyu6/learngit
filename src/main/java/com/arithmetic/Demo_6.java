@@ -9,7 +9,7 @@ import java.util.jar.JarEntry;
  */
 public class Demo_6 {
 
-/*
+    /**
     将一个给定字符串根据给定的行数，以从上往下、从左到右进行 Z 字形排列。
 
     比如输入字符串为 "LEETCODEISHIRING" 行数为 3 时，排列如下：
@@ -39,7 +39,7 @@ public class Demo_6 {
     E   O E   I I
     E C   I H   N
     T     S     G
-*/
+    **/
 
     public static String convert(String s, int numRows) {
         //将该字符串存入一个二维数组
