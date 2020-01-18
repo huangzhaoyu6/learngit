@@ -88,19 +88,14 @@ public class Demo_15 {
      * 2.当该元素的负数等于左右指针的和时，查看左右指针即将指向的下一个元素是否与当前指针元素相等，如果相等，直接向内移动一次。
      */
     public static List<List<Integer>> threeSum3(int[] nums) {
-
         List<List<Integer>> list = new ArrayList<>();
         int length = nums.length;
-        if (length < 3) {
-            return list;
-        }
+        if (length < 3) {return list;}
         int pre = nums[0] + 1;
         Arrays.sort(nums);
         for (int i = 0; i < length; i++) {
             int idx = nums[i];
-            if (pre == idx) {
-                continue;
-            }
+            if (pre == idx) {continue;}
             int l = i + 1;
             int r = length - 1;
             while (l < r) {

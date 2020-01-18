@@ -8,7 +8,7 @@ import java.util.List;
  * @author huangzhaoyu
  * @date 2020/1/16 17:46
  */
-public class Deom_18 {
+public class Demo_18 {
 
     /**
      * 给定一个包含 n 个整数的数组 nums 和一个目标值 target，
@@ -104,8 +104,76 @@ public class Deom_18 {
         return result;
     }
 
-    public static void main(String[] args) {
 
+    public static List<List<Integer>> threeSum3(int[] nums, int target) {
+        List<List<Integer>> list = new ArrayList<>();
+        int length = nums.length;
+        if (length < 4) {
+            return list;
+        }
+        Arrays.sort(nums);
+        for (int i = 0; i < length - 3; i++) {
+            //当i的值与前面的值相等时忽略
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            //优化：获取当前i及后面三位的和，如果比目标值大，说明后面的没有必要做处理了，因为无论如何后面的数字加起来都不可能等于或者小于target
+            if (nums[i] + nums[i+1] + nums[i+2] + nums[i+3] > target) {
+                break;
+            }
+            //优化：获取当前最后一个数及前面三位的和，如果比目标值小，本次循环 直接取下一个i，因为下一个i加上后面的三位，总数还有可能会变大
+            if (nums[i] + nums[length-1] + nums[length-2] + nums[length-3] < target) {
+                continue;
+            }
+            for (int j = i + 1; j < length - 2; j++) {
+                //当j的值与前面的值相等时忽略
+                if (j > i + 1 && nums[j] == nums[j - 1]) {
+                    continue;
+                }
+                int l = j + 1;
+                int r = length - 1;
+                //优化：获取当前i及后面三位的和，如果比目标值大，说明后面的没有必要做处理了，因为无论如何后面的数字加起来都不可能等于或者小于target
+                if (nums[i] + nums[j] + nums[l] + nums[l+1] > target) {
+                    break;
+                }
+                //优化：获取当前最后一个数及前面三位的和，如果比目标值小，本次循环 直接取下一个i，因为下一个i加上后面的三位，总数还有可能会变大
+                if (nums[i] + nums[j] + nums[r] + nums[r-1] < target) {
+                    continue;
+                }
+                while (l < r) {
+                    int left = nums[l];
+                    int right = nums[r];
+                    int inum = nums[i];
+                    int jnum = nums[j];
+                    int sum = inum + jnum + right + left;
+                    if (target == sum) {
+                        List<Integer> li = new ArrayList<>();
+                        li.add(inum);
+                        li.add(jnum);
+                        li.add(left);
+                        li.add(right);
+                        list.add(li);
+                        while (l < r && left == nums[l]) {
+                            l++;
+                        }
+                        while (l < r && right == nums[r]) {
+                            r--;
+                        }
+                    } else if (target < sum) {
+                        r--;
+                    } else {
+                        l++;
+                    }
+                }
+            }
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {-1,0,1,2,-1,-4};
+        int target = -1;
+        System.out.println(threeSum3(nums, target));
     }
 
 }
