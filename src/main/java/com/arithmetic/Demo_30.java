@@ -71,7 +71,7 @@ public class Demo_30 {
             }
             if (map.equals(tmp_map)) res.add(i);
         }
-        return res;
+        return res;   
     }
 
 
