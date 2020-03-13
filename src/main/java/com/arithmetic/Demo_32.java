@@ -69,9 +69,10 @@ public class Demo_32 {
                 } else {
                     stack.pop();
                     if(stack.isEmpty()){
-                        //证明左括号已全部清空，左侧只能有右括号，所以需要减掉右括号的下标。
+                        //证明当前栈为正确的，需要刷新子串长度，所以长度为当前下标减去重新计算栈长的所在下标。
                         max = Math.max(max, index-start+1);
                     } else {
+                        //证明栈中还有左括号，所以子串的长度为当前下标减去左括号的下标
                         max = Math.max(max, index-stack.peek());
                     }
                 }
